@@ -1,0 +1,24 @@
+name: CI
+
+on:
+ 
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize
+    branches: [ "master" ]
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize  
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Slashgear/action-check-pr-title@2.0.0
+        with:
+            regex: '([a-z])+'
